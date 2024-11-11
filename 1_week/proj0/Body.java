@@ -70,7 +70,7 @@ class Body {
         for(int i = 0; i < bodies.length; i++) {
             if (!this.equals(bodies[i])) {
                 double yForce = this.calcForceExertedByY(bodies[i]);
-                netYForce +=yForce;
+                netYForce += yForce;
             }
         }
         return netYForce;
@@ -87,5 +87,10 @@ class Body {
         this.yyVel = newYVel;
         this.xxPos = newXPosition;
         this.yyPos = newYPosition;
+    }
+
+    public void draw() {
+        String filePath = "./images/" + this.imgFileName;
+        StdDraw.picture(this.xxPos, this.yyPos, filePath);
     }
 }
