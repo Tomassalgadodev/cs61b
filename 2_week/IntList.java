@@ -43,6 +43,13 @@ class IntList {
         return counter;
     }
 
+    public int get(int i) {
+        if (i == 0) {
+            return this.first;
+        }
+        return this.rest.get(i - 1);
+    }
+
     public static void main (String[] args) {
         IntList L = new IntList(15, null);
         L = new IntList(10, L);
@@ -79,9 +86,6 @@ class IntList {
         L = new IntList(5, L);
         L = new IntList(1, L);
 
-        System.out.println(L.size(1));
-        System.out.println(L.iterativeSize(L));
-        System.out.println(L.size2());
-        System.out.println(L.iterativeSize2());
+        System.out.println(L.get(33));
     }
 }
