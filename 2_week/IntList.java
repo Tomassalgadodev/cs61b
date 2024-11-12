@@ -7,6 +7,7 @@ class IntList {
         rest = r;
     }
 
+    // This is how I originally wrote these functions on my own:
     public int size(int currentSize) {
         if (this.rest != null) {
             currentSize += 1;
@@ -20,6 +21,24 @@ class IntList {
         while(L.rest != null) {
             L = L.rest;
             counter += 1;
+        }
+        return counter;
+    }
+
+    // This is how Professor Jug wrote them:
+    public int size2() {
+        if (this.rest == null) {
+            return 1;
+        }
+        return 1 + this.rest.size2();
+    }
+
+    public int iterativeSize2() {
+        IntList p = this;
+        int counter = 0;
+        while (p != null) {
+            counter += 1;
+            p = p.rest;
         }
         return counter;
     }
@@ -62,5 +81,7 @@ class IntList {
 
         System.out.println(L.size(1));
         System.out.println(L.iterativeSize(L));
+        System.out.println(L.size2());
+        System.out.println(L.iterativeSize2());
     }
 }
