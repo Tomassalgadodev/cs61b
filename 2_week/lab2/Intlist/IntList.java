@@ -72,8 +72,6 @@ public class IntList {
         return new IntList(L.first * L.first, squareListRecursive(L.rest));
     }
 
-    /** DO NOT MODIFY ANYTHING ABOVE THIS LINE! */
-
 
     /**
      * Returns a list consisting of the elements of A followed by the
@@ -81,8 +79,16 @@ public class IntList {
      */
 
     public static IntList dcatenate(IntList A, IntList B) {
-        //TODO:  fill in method
-        return null;
+        IntList ptr = A;
+        while (ptr.rest != null) {
+            ptr = ptr.rest;
+        }
+        while (B != null) {
+            ptr.rest = new IntList(B.first, null);
+            ptr = ptr.rest;
+            B = B.rest;
+        }
+        return A;
     }
 
     /**
@@ -90,11 +96,32 @@ public class IntList {
      * * elements of B.  May NOT modify items of A.  Use 'new'.
      */
     public static IntList catenate(IntList A, IntList B) {
-        //TODO:  fill in method
-        return null;
+        IntList res, ptr;
+        res = new IntList(A.first, null);
+        ptr = res;
+        A = A.rest;
+        while (A != null) {
+            ptr.rest = new IntList(A.first, null);
+            ptr = ptr.rest;
+            A = A.rest;
+        }
+        while (B != null) {
+            ptr.rest = new IntList(B.first, null);
+            ptr = ptr.rest;
+            B = B.rest;
+        }
+        return res;
     }
 
-
+    public static IntList catenateRecursive(IntList A, IntList B) {
+        if (A == null && B == null) {
+            return null;
+        } else if (A == null) {
+            return new IntList(B.first, catenate(A, B.rest));
+        } else {
+            return new IntList(A.first, catenate(A.rest, B));
+        }
+    }
 
 
 
